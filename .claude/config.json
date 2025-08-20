@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 .claude/hooks/npm_command_normalizer.py"
+            "command": "python3 .claude/hooks/main_command_normalizer.py"
           }
         ]
       }

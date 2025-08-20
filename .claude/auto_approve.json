@@ -1,0 +1,10 @@
+[
+  {
+    "pattern": ".*npm test.*--grep",
+    "reason": "Auto-approved npm test with grep"
+  },
+  {
+    "pattern": "^timeout [0-9]+ .*",
+    "reason": "Auto-approved timeout command"
+  }
+]

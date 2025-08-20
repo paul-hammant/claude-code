@@ -11,8 +11,17 @@ def normalize_command(command: str) -> str:
     except ValueError:
         parts = command.split()
 
+    npm_index = -1
+    for i, part in enumerate(parts):
+        if part.endswith('/npm') or part == 'npm':
+            npm_index = i
+            break
+
+    if npm_index == -1:
+        return command # npm not found
+
     try:
-        npm_index = parts.index('npm')
+        # Look for 'test' after the 'npm' part
         test_index = parts.index('test', npm_index)
     except ValueError:
         return command

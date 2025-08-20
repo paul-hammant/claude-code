@@ -1,10 +1,10 @@
 [
   {
-    "pattern": "^npm test.*--grep",
+    "pattern": ".*npm test.*--grep",
     "script": ".claude/similarity_hooks/npm_grep.py"
   },
   {
-    "pattern": "^timeout [0-9]+",
+    "pattern": "^timeout [0-9]+ .*",
     "script": ".claude/similarity_hooks/timeout.sh"
   }
 ]

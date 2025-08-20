@@ -1,18 +1,8 @@
 #!/usr/bin/env python3
-"""
-Command Similarity Fixer for 'npm test -- --grep'
-==================================================
-Pattern: ^npm test.*--grep
-"""
-
-import json
 import sys
 import shlex
 
 def normalize_command(command: str) -> str:
-    """
-    Normalizes an 'npm test' command by removing the --grep option.
-    """
     if "npm test" not in command:
         return command
 
@@ -52,22 +42,14 @@ def normalize_command(command: str) -> str:
     return normalized_command
 
 def main():
-    try:
-        input_data = json.load(sys.stdin)
-        command = input_data.get("tool_input", {}).get("command", "")
-    except (json.JSONDecodeError, AttributeError):
-        sys.exit(0)
+    # Read command from stdin
+    command = sys.stdin.read().strip()
 
     if not command:
-        print(json.dumps(input_data))
         sys.exit(0)
 
     normalized_command = normalize_command(command)
-
-    if normalized_command != command:
-        input_data["tool_input"]["command"] = normalized_command
-
-    print(json.dumps(input_data))
+    print(normalized_command)
 
 if __name__ == "__main__":
     main()
